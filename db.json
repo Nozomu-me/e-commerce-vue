@@ -1,0 +1,134 @@
+{
+  "products":[
+    {
+      "id":1,
+      "flavor":"apple",
+      "name": "braeburn",
+      "category": "sorbet",
+      "image": "https://img.sunset02.com/sites/default/files/styles/marquee_large_2x/public/image/recipes/su/10/10/apple-sorbet-su-x.jpg"
+    },
+    {
+      "id":2,
+      "flavor":"chocolate",
+      "name": "dark",
+      "category": "sorbet",
+      "image": "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/87325753-5FEB-4E15-8EB3-1D2105D5FA70/Derivates/402a81a8-6150-4057-a890-eb21479f10b0.jpg"
+    },
+    {
+      "id":3,
+      "flavor":"citrus",
+      "name": "kalamansi",
+      "category": "sorbet",
+      "image": "https://www.healthfulpursuit.com/wp-content/uploads/Mango-Citrus-Sorbet-12.jpg"
+    },
+    {
+      "id":4,
+      "flavor":"blackberry",
+      "name": "campari",
+      "category": "sorbet",
+      "image": "https://www.imperialsugar.com/sites/default/files/recipe/Blackberry-Sorbet-imperial.jpg"
+    },
+    {
+      "id":5,
+      "flavor":"kiwi",
+      "name": "yusu shiso",
+      "category": "sorbet",
+      "image": "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/84EB33FA-F808-43BB-9581-5E54139CAAF5/Derivates/013dc8df-cb30-4edc-bb7c-5a67347a819e.jpg"
+    },
+    {
+      "id": 6,
+      "flavor":"Chocolate Chip",
+      "name":"scoopy",
+      "category":"ice cream",
+      "image": "https://decoratedtreats.com/wp-content/uploads/2021/10/homemade-chocolate-chip-ice-cream-3.jpg"
+    },
+    {
+      "id": 7,
+      "flavor":"Strawberry",
+      "category":"ice cream",
+      "name":"swirly",
+      "image": "https://www.thespruceeats.com/thmb/kpuMkqk0BhGMTuSENf_IebbHu1s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/strawberry-ice-cream-10-0b3e120e7d6f4df1be3c57c17699eb2c.jpg"
+    },
+    {
+      "id": 8,
+      "flavor":"Mint Chocolate Chip",
+      "category":"ice cream",
+      "name":"froosty",
+      "image": "https://www.browneyedbaker.com/wp-content/uploads/2020/06/Mint-chocolate-chip-ice-cream-14-square-500x500.jpg"
+    },
+    {
+      "id": 9,
+      "flavor":"Matcha",
+      "category":"ice cream",
+      "name":"chacha",
+      "image": "https://www.rotinrice.com/wp-content/uploads/2011/08/MatchaIceCream-1.jpg"
+    },
+    {
+      "id": 10,
+      "flavor":"vanilla",
+      "category":"Philadelphia Style",
+      "name":"fudgy",
+      "image": "https://lovetobeinthekitchen.com/wp-content/uploads/2012/08/Vanilla-Ice-Cream-Philadelphia-Style-scaled-e1653972962655.jpg"
+    },
+    {
+      "id": 11,
+      "flavor":"coconut",
+      "category":"Philadelphia Style",
+      "name":"divine",
+      "image": "https://i0.wp.com/lifecurrentsblog.com/wp-content/uploads/2018/06/MG_5728.jpg"
+    },
+    {
+      "id": 12,
+      "flavor":"oreo",
+      "category":"Philadelphia Style",
+      "name":"creamy",
+      "image": "https://www.keep-calm-and-eat-ice-cream.com/wp-content/uploads/2023/01/Oreo-ice-cream-hero-13.jpg"
+    },
+    {
+      "id": 13,
+      "flavor":"mint",
+      "category":"Philadelphia Style",
+      "name":"minty",
+      "image": "https://www.theserialhobbyistgirl.com/wp-content/uploads/2017/12/IMG_2663_p_small.jpg"
+    },
+    {
+      "id": 14,
+      "flavor":"Banana",
+      "category":"mochi",
+      "name":"banana fana fo fana",
+      "image": "https://whattocooktoday.com/wp-content/uploads/2022/07/banana-mochi-rolls-18.jpg"
+    },
+    {
+      "id": 15,
+      "flavor":"Orange",
+      "category":"mochi",
+      "name":"heavenly",
+      "image": "https://dinnersready.ae/wp-content/uploads/2022/01/Mango-Mochi.jpg"
+    },
+    {
+      "id": 16,
+      "flavor":"Mango",
+      "category":"mochi",
+      "name":"fandango",
+      "image": "https://recipes.net/wp-content/uploads/2022/03/mango-mochi-recipe.jpg"
+    },
+    {
+      "id": 17,
+      "flavor":"Red bean",
+      "category":"mochi",
+      "name":"luscious",
+      "image": "https://www.thespruceeats.com/thmb/qu7zrtlUHDvlB6cHTaTRecXFp2A=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/japanese-daifuku-recipe-2031114-hero-06-baa1cd041b4e4a32a483a359a6a6b426.jpg"
+    }
+  ],
+  "customer": {
+    "fullName": "tes tes",
+    "email": "test@mail.com",
+    "password": "sxkjhdkc",
+    "address": "sxhjsx sxkjabcd",
+    "payment": {
+      "cardNumber": 76531573653,
+      "cardOwner": "sjhsx jshsx"
+    }
+  },
+  "cart":[]
+}
