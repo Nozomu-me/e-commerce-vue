@@ -2,50 +2,52 @@
 
 ## 1. Project setup
 
--   Initialize a new Vue.js project with Vue CLI
--   Install and configure necessary dependencies (e.g., Vuex, Vue Router, Axios)
--   Set up a basic folder structure for components, views, and store
+- Initialize a new Vue.js project with Vue CLI
+- Install and configure necessary dependencies (e.g., Vuex, Vue Router, Axios)
+- Set up a basic folder structure for components, views, and store
 
 ## 2. UI Components
 
--   Create reusable UI components for the app (e.g., Button, InputField, Modal, ProductCard)
+- Create reusable UI components for the app (e.g., Button, InputField, Modal, ProductCard)
 
 ## 3. App layout
 
--   Design and implement a responsive layout with a header, footer, and main content area
+- Design and implement a responsive layout with a header, footer, and main content area
 
 ## 4. App views
 
--   Home: Display featured products and categories
--   Products: Show all products with filters (e.g., category, price, rating)
--   ProductDetails: Show detailed information about a specific product, including images, description and customer reviews
--   Cart: Display items in the cart, allow for quantity updates and removal, and proceed to checkout
--   Checkout: Collect customer information, shipping address, and payment details
--   OrderConfirmation: Display a summary of the completed order
+- Home: Display featured products and categories
+- Products: Show all products with filters (e.g., category, price, rating)
+- ProductDetails: Show detailed information about a specific product, including images, description and customer reviews
+- Cart: Display items in the cart, allow for quantity updates and removal, and proceed to checkout
+- Checkout: Collect customer information, shipping address, and payment details
+- OrderConfirmation: Display a summary of the completed order
 
 ## 5. Vuex store
 
--   Set up a Vuex store with modules for products, cart, and user authentication
--   Implement actions and mutations to manage application state
+- Set up a Vuex store with modules for products, cart, and user authentication
+- Implement actions and mutations to manage application state
 
 ## 6. API integration
 
--   Integrate the app with a backend API to fetch product data, manage the cart, and handle user authentication and order processing
+- Integrate the app with a backend API to fetch product data, manage the cart, and handle user authentication and order processing
 
 ## 7. Testing (Bonus)
 
--   Write unit tests for components, views, and Vuex store modules
--   Set up end-to-end tests using a tool like Cypress to ensure the entire application workflow functions as expected
+- Write unit tests for components, views, and Vuex store modules
+- Set up end-to-end tests using a tool like Cypress to ensure the entire application workflow functions as expected
 
 ## 8. Deployment (Bonus)
 
--   Configure a production build process with optimizations for performance and bundle size
--   Set up continuous integration and deployment pipelines
--   Deploy the application to a hosting service (e.g., Netlify, Vercel, or Firebase)
+- Configure a production build process with optimizations for performance and bundle size
+- Set up continuous integration and deployment pipelines
+- Deploy the application to a hosting service (e.g., Netlify, Vercel, or Firebase)
 
 ## 9. Documentation
 
--   Write comprehensive documentation for the app, including setup instructions, architecture overview, and component usage guidelines# Derived Tasks
+- Write comprehensive documentation for the app, including setup instructions, architecture overview, and component usage guidelines
+
+# Derived Tasks
 
 1. Initialize Vue.js project and install dependencies
 2. Set up basic folder structure
