@@ -223,7 +223,7 @@ export default new Vuex.Store<State>({
         state.customer = res.data[0];
         let newCartProducts: CartProduct[] | undefined;
         let total = 0;
-        newCartProducts = state.customer?.cart.cartProducts.map((el) => {
+        newCartProducts = state.customer?.cart.cartProducts.filter((el) => {
           if (el.name !== cartProduct.name) {
             {
               total += el.quantity * +el.price;
