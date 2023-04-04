@@ -4,7 +4,7 @@
     <div class="modal">
       <button class="close-btn" @click="close">&times;</button>
       <form action="" @submit.prevent="submit">
-        <InputField placeholder="Email" @message="email = $event"></InputField>
+        <InputField placeholder="Email" @change="email = $event"></InputField>
         <small v-show="show">This user does not exist</small>
         <input type="submit" class="btn" value="Login" />
       </form>
@@ -17,6 +17,7 @@
 import InputField from '../components/InputField.vue';
 import Button from '../components/Button.vue';
 import ecomService from '@/services/ecomService';
+import { mapState } from 'vuex';
 export default {
   components: {
     InputField,
@@ -28,6 +29,7 @@ export default {
       show: false,
     };
   },
+  computed: mapState(['customer']),
   methods: {
     close() {
       this.$emit('show', false);
@@ -36,10 +38,21 @@ export default {
       this.$emit('show', false);
       this.$router.push({ name: 'register' });
     },
-    submit() {
+    async submit() {
+      // console.log('email = ', this.email);
+      // await this.$store.dispatch('loginCustomer', { email: this.email });
+      // console.log('----- dis ', this.customer);
+      // if (this.customer !== undefined) {
+      //   this.show = false;
+      //   localStorage.setItem('email', this.email);
+      //   this.$router.go(0);
+      // } else {
+      //   this.show = true;
+      // }
+
       ecomService.getCustomerByEmail(this.email).then((res) => {
-        console.log(res.data);
-        if (res.data.length) {
+        console.log('get in modal', res.data);
+        if (res.data.length !== undefined) {
           this.show = false;
           localStorage.setItem('email', this.email);
           this.$router.go(0);

@@ -1,13 +1,23 @@
 {
   "customers": [
     {
-      "firstName": "jkjk",
-      "lastName": "jkhjk",
-      "email": "aa",
-      "phoneNumber": "kjjhkj",
+      "firstName": "amal",
+      "lastName": "amal",
+      "email": "amal",
+      "phoneNumber": "0901289712892",
       "cart": {
-        "products": [],
-        "totalPrice": 0
+        "cartProducts": [
+          {
+            "name": "Stretch Concealer",
+            "brand": "glossier",
+            "price": "22.0",
+            "image": "https://static-assets.glossier.com/production/spree/images/attachments/000/001/631/portrait_normal/SC_Carousel_1_copy_2.jpg?1506948615",
+            "quantity": 5
+          },
+          null
+        ],
+        "totalPrice": 110,
+        "confirmed": false
       },
       "payment": {
         "cardNumber": "",

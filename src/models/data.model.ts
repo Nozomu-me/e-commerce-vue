@@ -20,17 +20,19 @@ export interface Product {
 }
 
 export interface CartProduct {
-  id: number;
+  id?: number;
   name: string;
   brand: string;
   price: string;
   image: string;
-  selectedColor: string;
+  quantity: number;
+  // selectedColor: string;
 }
 
 export interface Cart {
-  products: CartProduct[];
+  cartProducts: CartProduct[];
   totalPrice: number;
+  confirmed: boolean;
 }
 
 export interface Payment {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>home {{ customer.firstName }}</div>
+    <div>home</div>
   </div>
 </template>
 

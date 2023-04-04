@@ -10,23 +10,23 @@
         <InputField
           class="input"
           placeholder="First Name"
-          @message="user.firstName = $event"
+          @change="user.firstName = $event"
         ></InputField>
         <InputField
           class="input"
           placeholder="Last Name"
-          @message="user.lastName = $event"
+          @change="user.lastName = $event"
         ></InputField>
         <InputField
           class="input"
           placeholder="Email"
-          @message="user.email = $event"
+          @change="user.email = $event"
         ></InputField>
         <small v-show="errorEmail">This email is already used</small>
         <InputField
           class="input"
           placeholder="Phone Number"
-          @message="user.phoneNumber = $event"
+          @change="user.phoneNumber = $event"
         ></InputField>
         <input type="submit" class="btn" value="Register" />
       </form>

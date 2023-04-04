@@ -16,7 +16,7 @@
         <button @click.prevent="handleClick">
           <font-awesome-icon :icon="['fas', 'user']" class="icon user-icon" />
         </button>
-        <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="icon" />
+        <!-- <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="icon" /> -->
         <router-link :to="{ name: 'cart' }">
           <div class="cart" v-show="loged">
             <font-awesome-icon :icon="['fas', 'cart-shopping']" class="icon" />
@@ -45,16 +45,25 @@ export default {
     return { show: false, data: null, cartLen: 0 };
   },
   created() {
-    ecomService
-      .getCustomerByEmail(localStorage.getItem('email'))
-      .then((res) => {
-        this.cartLen = res.data[0].cart.products.length;
-      });
+    console.log(localStorage.getItem('email'));
+    if (localStorage.getItem('email') !== null) {
+      ecomService
+        .getCustomerByEmail(localStorage.getItem('email'))
+        .then((res) => {
+          console.log(res.data[0].cart.cartProducts);
+          this.cartLen = res.data[0].cart.cartProducts.length;
+        });
+    }
   },
   methods: {
     handleClick() {
       this.show = !this.show;
       this.$emit('show', this.show);
+    },
+  },
+  watch: {
+    cartLen(oldVal, newVal) {
+      console.log('old = ', oldVal, 'new = ', newVal);
     },
   },
 };

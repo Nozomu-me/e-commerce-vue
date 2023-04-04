@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div v-if="loading">Loading</div>
+  <div class="container" v-else>
     <h1>{{ product.name }}</h1>
     <hr />
     <div class="details-container">
@@ -46,56 +47,60 @@
 </template>
 
 <script>
-import ecomService from "@/services/ecomService";
-import Button from "../components/Button.vue";
+import ecomService from '@/services/ecomService';
+import { mapState } from 'vuex';
+import Button from '../components/Button.vue';
 export default {
   components: {
     Button,
   },
   created() {
-    ecomService.getProductById(this.$route.params.id).then((res) => {
-      let {
-        id,
-        brand,
-        name,
-        price,
-        price_sign: priceSign,
-        currency,
-        image_link: image,
-        description,
-        rating,
-        category,
-        product_type: productType,
-        tag_list: tagList,
-        product_colors,
-      } = res.data;
-      let productColors = [];
-      for (let el of product_colors) {
-        let { hex_value: value, colour_name: name } = el;
-        productColors.push({ value, name });
-      }
-      this.product = {
-        id,
-        brand,
-        name,
-        price,
-        priceSign,
-        currency,
-        image,
-        description,
-        rating,
-        category,
-        productType,
-        tagList,
-        productColors,
-      };
-    });
+    this.$store.dispatch('getProductById', { id: this.$route.params.id });
+    // ecomService.getProductById(this.$route.params.id).then((res) => {
+    //   let {
+    //     id,
+    //     brand,
+    //     name,
+    //     price,
+    //     price_sign: priceSign,
+    //     currency,
+    //     image_link: image,
+    //     description,
+    //     rating,
+    //     category,
+    //     product_type: productType,
+    //     tag_list: tagList,
+    //     product_colors,
+    //   } = res.data;
+    //   let productColors = [];
+    //   for (let el of product_colors) {
+    //     let { hex_value: value, colour_name: name } = el;
+    //     productColors.push({ value, name });
+    //   }
+    //   this.product = {
+    //     id,
+    //     brand,
+    //     name,
+    //     price,
+    //     priceSign,
+    //     currency,
+    //     image,
+    //     description,
+    //     rating,
+    //     category,
+    //     productType,
+    //     tagList,
+    //     productColors,
+    //   };
+    // });
   },
-  data() {
-    return {
-      product: {},
-    };
-  },
+  computed: mapState(['product', 'loading']),
+
+  // data() {
+  //   return {
+  //     product: {},
+  //   };
+  // },
 };
 </script>
 

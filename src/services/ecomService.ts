@@ -27,4 +27,7 @@ export default {
   getCustomerByEmail(email: string) {
     return apiClient.get(`/customers?email=${email}`);
   },
+  updateCustomer(id: number, customer: Customer) {
+    return apiClient.put(`customers/${id}`, customer);
+  },
 };

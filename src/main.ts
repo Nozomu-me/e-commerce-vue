@@ -15,10 +15,19 @@ import {
   faUser,
   faMagnifyingGlass,
   faRightFromBracket,
+  faTrash,
+  faBasketShopping,
 } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons to the library */
-library.add(faCartShopping, faUser, faMagnifyingGlass, faRightFromBracket);
+library.add(
+  faCartShopping,
+  faUser,
+  faMagnifyingGlass,
+  faRightFromBracket,
+  faTrash,
+  faBasketShopping
+);
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon);
