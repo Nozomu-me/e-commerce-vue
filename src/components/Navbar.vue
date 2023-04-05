@@ -21,7 +21,7 @@
           <div class="cart" v-show="loged">
             <font-awesome-icon :icon="['fas', 'cart-shopping']" class="icon" />
             <div class="products-nbr">
-              {{ cartLen }}
+              {{ $store.state.customer?.cart.cartProducts.length }}
             </div>
           </div>
         </router-link>
@@ -35,6 +35,7 @@
 import ecomService from '@/services/ecomService';
 import Modal from '../components/Modal.vue';
 import Button from './Button.vue';
+import { mapState } from 'vuex';
 export default {
   props: ['loged'],
   components: {
@@ -42,28 +43,18 @@ export default {
     Button,
   },
   data() {
-    return { show: false, data: null, cartLen: 0 };
+    return { show: false, data: null };
   },
+  // computed: mapState(['customer']),
   created() {
-    console.log(localStorage.getItem('email'));
-    if (localStorage.getItem('email') !== null) {
-      ecomService
-        .getCustomerByEmail(localStorage.getItem('email'))
-        .then((res) => {
-          console.log(res.data[0].cart.cartProducts);
-          this.cartLen = res.data[0].cart.cartProducts.length;
-        });
-    }
+    this.$store.dispatch('getCustomerByEmail', {
+      email: localStorage.getItem('email'),
+    });
   },
   methods: {
     handleClick() {
       this.show = !this.show;
       this.$emit('show', this.show);
-    },
-  },
-  watch: {
-    cartLen(oldVal, newVal) {
-      console.log('old = ', oldVal, 'new = ', newVal);
     },
   },
 };

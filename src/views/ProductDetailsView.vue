@@ -19,14 +19,17 @@
               class="color select-color"
             ></div>
           </div>
-          <Button title="Add to Cart"></Button>
+          <Button
+            v-show="show"
+            title="Add to Cart"
+            @clicked="addToCart"
+          ></Button>
         </div>
       </div>
     </div>
     <hr />
     <div class="colors-container">
       <div v-for="color in product.productColors">
-        <!-- {{ color.name }} -->
         <div class="cols">
           <div :style="{ backgroundColor: color.value }" class="color"></div>
           <div>{{ color.name }}</div>
@@ -56,51 +59,25 @@ export default {
   },
   created() {
     this.$store.dispatch('getProductById', { id: this.$route.params.id });
-    // ecomService.getProductById(this.$route.params.id).then((res) => {
-    //   let {
-    //     id,
-    //     brand,
-    //     name,
-    //     price,
-    //     price_sign: priceSign,
-    //     currency,
-    //     image_link: image,
-    //     description,
-    //     rating,
-    //     category,
-    //     product_type: productType,
-    //     tag_list: tagList,
-    //     product_colors,
-    //   } = res.data;
-    //   let productColors = [];
-    //   for (let el of product_colors) {
-    //     let { hex_value: value, colour_name: name } = el;
-    //     productColors.push({ value, name });
-    //   }
-    //   this.product = {
-    //     id,
-    //     brand,
-    //     name,
-    //     price,
-    //     priceSign,
-    //     currency,
-    //     image,
-    //     description,
-    //     rating,
-    //     category,
-    //     productType,
-    //     tagList,
-    //     productColors,
-    //   };
-    // });
+    if (localStorage.getItem('email') !== null) this.show = true;
   },
   computed: mapState(['product', 'loading']),
+  methods: {
+    addToCart() {
+      let { name, brand, price, image } = this.product;
+      this.$store.dispatch('addToCart', {
+        email: localStorage.getItem('email'),
+        cartProduct: { name, brand, price, image, quantity: 1 },
+      });
+      this.$router.push({ name: 'cart' });
+    },
+  },
 
-  // data() {
-  //   return {
-  //     product: {},
-  //   };
-  // },
+  data() {
+    return {
+      show: false,
+    };
+  },
 };
 </script>
 

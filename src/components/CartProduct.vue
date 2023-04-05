@@ -6,7 +6,8 @@
       <div class="name">{{ product.name }}</div>
       <div class="brand">{{ product.brand }}</div>
     </div>
-    <div>
+    <div class="qty">
+      <span> Quantity: </span>
       <InputField
         type="number"
         min="1"
@@ -65,6 +66,14 @@ img {
 }
 .brand {
   font-size: 20px;
+}
+.qty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+  font-weight: bold;
 }
 @media (max-width: 800px) {
   .container {

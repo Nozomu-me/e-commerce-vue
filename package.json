@@ -20,6 +20,7 @@
     "vue-persistent-state": "^0.2.1",
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.5.1",
+    "vue-simple-spinner": "^1.2.10",
     "vuejs-title": "^1.0.16",
     "vuex": "^3.6.2"
   },

@@ -1,20 +1,37 @@
 {
+  "orders": [],
   "customers": [
     {
       "firstName": "amal",
-      "lastName": "amal",
-      "email": "amal",
-      "phoneNumber": "0901289712892",
+      "lastName": "ouassit",
+      "email": "amal@mail.com",
+      "password": "1234",
+      "phoneNumber": "08329274",
       "cart": {
-        "cartProducts": [],
-        "totalPrice": 0,
-        "confirmed": false
+        "cartProducts": [
+          {
+            "name": "Sculpt & Highlight Brow Contour",
+            "brand": "nyx",
+            "price": "10.0",
+            "image": "https://www.nyxcosmetics.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-cpd-nyxusa-master-catalog/default/dw2d356326/ProductImages/2016/Eyes/Sculpt_And_Highlight_Brow_Contour/sculptandhighlightbrowcontour_main.jpg?sw=390&sh=390&sm=fit",
+            "quantity": 1
+          },
+          {
+            "name": "Control Freak Eyebrow Gel",
+            "brand": "nyx",
+            "price": "6.0",
+            "image": "https://www.nyxcosmetics.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-cpd-nyxusa-master-catalog/default/dwdf8d06a2/ProductImages/Eyes/Control_Freak_Eyebrow_Gel/controlfreakeyebrowgel_main.jpg?sw=390&sh=390&sm=fit",
+            "quantity": 1
+          }
+        ],
+        "totalPrice": 16
       },
       "payment": {
-        "cardNumber": "",
-        "cardOwner": ""
+        "cardNumber": "092989329",
+        "cardOwner": "amal ouassit",
+        "expiration": "2023-04-20"
       },
-      "shippingAdress": "",
+      "shippingAddress": "alia mohammedia",
       "id": 1
     }
   ],

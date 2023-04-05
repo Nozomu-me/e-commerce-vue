@@ -5,10 +5,17 @@
       <button class="close-btn" @click="close">&times;</button>
       <form action="" @submit.prevent="submit">
         <InputField placeholder="Email" @change="email = $event"></InputField>
-        <small v-show="show">This user does not exist</small>
+        <!-- <small v-show="show">This user does not exist</small> -->
+        <InputField
+          placeholder="Password"
+          @change="password = $event"
+          type="password"
+        ></InputField>
+        <small v-show="show">Wrong password or email</small>
         <input type="submit" class="btn" value="Login" />
       </form>
-      <a @click="handleClick">Register</a>
+      <a @click="handleClick">Register {{ $store.customer?.email }} </a>
+      <!-- <p>{{ $store.customer?.email }}</p> -->
     </div>
   </div>
 </template>
@@ -26,6 +33,7 @@ export default {
   data() {
     return {
       email: '',
+      password: '',
       show: false,
     };
   },
@@ -39,20 +47,10 @@ export default {
       this.$router.push({ name: 'register' });
     },
     async submit() {
-      // console.log('email = ', this.email);
-      // await this.$store.dispatch('loginCustomer', { email: this.email });
-      // console.log('----- dis ', this.customer);
-      // if (this.customer !== undefined) {
-      //   this.show = false;
-      //   localStorage.setItem('email', this.email);
-      //   this.$router.go(0);
-      // } else {
-      //   this.show = true;
-      // }
-
       ecomService.getCustomerByEmail(this.email).then((res) => {
-        console.log('get in modal', res.data);
-        if (res.data.length !== undefined) {
+        console.log(res.data);
+
+        if (res.data.length !== 0 && res.data[0].password === this.password) {
           this.show = false;
           localStorage.setItem('email', this.email);
           this.$router.go(0);
@@ -90,7 +88,7 @@ small {
   border-radius: 10px;
   background-color: white;
   width: 600px;
-  height: 300px;
+  height: 500px;
   position: fixed;
   top: 0;
   bottom: 0;

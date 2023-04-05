@@ -30,13 +30,6 @@ export default {
   created() {
     if (localStorage.getItem('email') === null) this.show = false;
     else this.show = true;
-    // ecomService
-    //   .getCustomerByEmail(localStorage.getItem('email'))
-    //   .then((res) => {
-    //     this.customer = res.data[0];
-    //     // console.log('created ', this.customer);
-    //   })
-    //   .catch((err) => console.log('hna'));
   },
   props: {
     product: {
@@ -62,36 +55,10 @@ export default {
     },
     addToCart() {
       let { name, brand, price, image } = this.product;
-      //   ecomService
-      //     .getCustomerByEmail(localStorage.getItem('email'))
-      //     .then((res) => {
-      //       this.customer = res.data[0];
-      //     });
       this.$store.dispatch('addToCart', {
         email: localStorage.getItem('email'),
         cartProduct: { name, brand, price, image, quantity: 1 },
       });
-      this.$router.push({ name: 'cart' });
-      //   console.log('customer = ', this.customer);
-      //   ecomService
-      //     .getCustomerByEmail(localStorage.getItem('email'))
-      //     .then((res) => {
-      //       this.customer = res.data[0];
-      //       // console.log('created ', this.customer);
-      //       //   console.log('add ', this.customer);
-      //       let newProducts = this.customer.cart.products;
-      //       let total = this.customer.cart.totalPrice + +this.product.price;
-      //       newProducts.push(this.product);
-      //       this.customer = {
-      //         ...this.customer,
-      //         cart: {
-      //           products: newProducts,
-      //           totalPrice: total,
-      //         },
-      //       };
-      //       ecomService.updateCustomer(this.customer.id, this.customer);
-      //       this.$router.push({ name: 'cart' });
-      //     });
     },
   },
 };

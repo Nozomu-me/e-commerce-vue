@@ -7,6 +7,8 @@ import OrderConfirmationView from '../views/OrderConfirmationView.vue';
 import ProductDetailsView from '../views/ProductDetailsView.vue';
 import ProductsView from '../views/ProductsView.vue';
 import RegisterView from '../views/RegisterView.vue';
+import NotFoundView from '../views/NotFoundView.vue';
+import ThankYouView from '../views/ThankYouView.vue';
 
 Vue.use(VueRouter);
 
@@ -45,6 +47,16 @@ const routes: Array<RouteConfig> = [
     path: '/register',
     name: 'register',
     component: RegisterView,
+  },
+  {
+    path: '/thank-you',
+    name: 'thank-you',
+    component: ThankYouView,
+  },
+  {
+    path: '**',
+    name: 'not-found',
+    component: NotFoundView,
   },
 ];
 

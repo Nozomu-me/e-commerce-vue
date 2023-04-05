@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="loading">Loading</div>
+    <div v-if="loading" class="spinner"><Spinner size="huge" /></div>
     <div class="cards" v-else>
       <div v-for="product in products">
         <ProductCard :product="product" class="card"></ProductCard>
@@ -11,10 +11,12 @@
 
 <script>
 import ProductCard from '../components/ProductCard.vue';
+import Spinner from 'vue-simple-spinner';
 import { mapState } from 'vuex';
 export default {
   components: {
     ProductCard,
+    Spinner,
   },
   methods: {},
   created() {
@@ -27,6 +29,12 @@ export default {
 </script>
 
 <style scoped>
+.spinner {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container {
   padding: 50px;
 }

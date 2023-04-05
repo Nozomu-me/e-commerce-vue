@@ -21,6 +21,13 @@
           class="input"
           placeholder="Email"
           @change="user.email = $event"
+          type="email"
+        ></InputField>
+        <InputField
+          class="input"
+          placeholder="Password"
+          @change="user.password = $event"
+          type="password"
         ></InputField>
         <small v-show="errorEmail">This email is already used</small>
         <InputField
@@ -62,6 +69,7 @@ export default {
         firstName: '',
         lastName: '',
         email: '',
+        password: '',
         phoneNumber: '',
       };
     },

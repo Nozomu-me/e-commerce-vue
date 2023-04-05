@@ -10,9 +10,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { mutationTypes } from './mutation-types';
 import ecomService from '../services/ecomService';
-
 Vue.use(Vuex);
-
 interface State {
   products: Product[];
   product?: Product;
@@ -124,20 +122,21 @@ export default new Vuex.Store<State>({
     },
     [mutationTypes.POST_CUSTOMER](
       state,
-      { firstName, lastName, email, phoneNumber }
+      { firstName, lastName, email, password, phoneNumber }
     ) {
       let customer: Customer;
       let cartProducts: CartProduct[] = [];
-      let cart: Cart = { cartProducts, totalPrice: 0, confirmed: false };
-      let payment: Payment = { cardNumber: '', cardOwner: '' };
+      let cart: Cart = { cartProducts, totalPrice: 0 };
+      let payment: Payment = { cardNumber: '', cardOwner: '', expiration: '' };
       customer = {
         firstName,
         lastName,
         email,
+        password,
         phoneNumber,
         cart,
         payment,
-        shippingAdress: '',
+        shippingAddress: '',
       };
       state.customer = customer;
       ecomService.postCustomer(customer);
@@ -147,14 +146,16 @@ export default new Vuex.Store<State>({
         state.customer = res.data[0];
       });
     },
-    [mutationTypes.ADD_TO_CART](state, { email, cartProduct: newCartProduct }) {
+    async [mutationTypes.ADD_TO_CART](
+      state,
+      { email, cartProduct: newCartProduct }
+    ) {
       ecomService.getCustomerByEmail(email).then((res) => {
         state.customer = res.data[0];
         let {
           cart: { cartProducts },
         } = state.customer as Customer;
 
-        console.log(cartProducts);
         let ret: CartProduct[] = [];
         let exist = false;
         for (let el of cartProducts) {
@@ -182,7 +183,7 @@ export default new Vuex.Store<State>({
         ecomService
           .updateCustomer(newCustomer.id as number, newCustomer)
           .then((res) => {
-            state.customer = res.data[0];
+            state.customer = res.data;
           });
       });
     },
@@ -214,11 +215,10 @@ export default new Vuex.Store<State>({
               },
             } as Customer
           )
-          .then((res) => (state.customer = res.data[0]));
+          .then((res) => (state.customer = res.data));
       });
     },
     [mutationTypes.DELETE_PRODUCT](state, { email, cartProduct }) {
-      console.log(cartProduct);
       ecomService.getCustomerByEmail(email).then((res) => {
         state.customer = res.data[0];
         let newCartProducts: CartProduct[] | undefined;
@@ -243,8 +243,17 @@ export default new Vuex.Store<State>({
               },
             } as Customer
           )
-          .then((res) => (state.customer = res.data[0]));
+          .then((res) => (state.customer = res.data));
       });
+    },
+    [mutationTypes.UPDATE_CUSTOMER](state, payload) {
+      console.log(payload);
+      const customer: Customer = payload;
+      ecomService
+        .updateCustomer(customer.id as number, customer)
+        .then((res) => {
+          state.customer = res.data;
+        });
     },
   },
   actions: {
@@ -259,6 +268,9 @@ export default new Vuex.Store<State>({
     },
     getCustomerByEmail({ commit }, payload) {
       commit(mutationTypes.GET_CUSTOMER_BY_EMAIL, payload);
+    },
+    updateCustomer({ commit }, payload) {
+      commit(mutationTypes.UPDATE_CUSTOMER, payload);
     },
     addToCart({ commit }, payload) {
       commit(mutationTypes.ADD_TO_CART, payload);
