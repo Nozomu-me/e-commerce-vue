@@ -1,5 +1,24 @@
 <template>
   <div class="container">
+    <div class="category" v-if="!loading">
+      <div>
+        <label for="category">Choose a category:</label>
+        <select name="category" id="category" @input="selectCategory">
+          <option value="all">all</option>
+          <option value="powder">powder</option>
+          <option value="cream">cream</option>
+          <option value="pencil">pencil</option>
+          <option value="liquid">liquid</option>
+          <option value="gel">gel</option>
+          <option value="palette">palette</option>
+          <option value="concealer">concealer</option>
+          <option value="mineral">mineral</option>
+          <option value="lipstick">lipstick</option>
+          <option value="lip_gloss">lip gloss</option>
+          <option value="lip_stain">lip stain</option>
+        </select>
+      </div>
+    </div>
     <div v-if="loading" class="spinner"><Spinner size="huge" /></div>
     <div class="cards" v-else>
       <div v-for="product in products">
@@ -18,7 +37,16 @@ export default {
     ProductCard,
     Spinner,
   },
-  methods: {},
+  methods: {
+    selectCategory(e) {
+      if (e.target.value === 'all') this.$store.dispatch('getProducts');
+      else
+        this.$store.dispatch('filterProducts', {
+          key: 'category',
+          value: e.target.value,
+        });
+    },
+  },
   created() {
     this.$store.dispatch('getProducts');
   },
@@ -46,5 +74,16 @@ export default {
   gap: 30px;
 }
 .card {
+}
+.category {
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: bold;
+}
+select {
+  padding: 10px;
+  width: 30%;
+  max-width: 300px;
+  font-size: 20px;
 }
 </style>

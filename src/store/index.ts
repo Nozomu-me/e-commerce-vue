@@ -32,6 +32,7 @@ export default new Vuex.Store<State>({
   mutations: {
     [mutationTypes.GET_PRODUCTS](state) {
       state.loading = true;
+      state.products = [];
       ecomService
         .getProducts()
         .then((res) => {
@@ -221,6 +222,7 @@ export default new Vuex.Store<State>({
     [mutationTypes.DELETE_PRODUCT](state, { email, cartProduct }) {
       ecomService.getCustomerByEmail(email).then((res) => {
         state.customer = res.data[0];
+
         let newCartProducts: CartProduct[] | undefined;
         let total = 0;
         newCartProducts = state.customer?.cart.cartProducts.filter((el) => {
@@ -243,7 +245,11 @@ export default new Vuex.Store<State>({
               },
             } as Customer
           )
-          .then((res) => (state.customer = res.data));
+          .then((res) => {
+            console.log('------------- res ', res.data);
+            console.log('------------------ customer ', state.customer);
+            state.customer = res.data;
+          });
       });
     },
     [mutationTypes.UPDATE_CUSTOMER](state, payload) {
@@ -254,6 +260,54 @@ export default new Vuex.Store<State>({
         .then((res) => {
           state.customer = res.data;
         });
+    },
+    [mutationTypes.FILTER_PRODUCTS](state, { key, value }) {
+      console.log(key, value);
+      state.loading = true;
+      ecomService
+        .filterProducts(key, value)
+        .then((res) => {
+          state.products = [];
+          for (let el of res.data) {
+            let {
+              id,
+              brand,
+              name,
+              price,
+              price_sign: priceSign,
+              currency,
+              image_link: image,
+              description,
+              rating,
+              category,
+              product_type: productType,
+              tag_list: tagList,
+              product_colors,
+            } = el;
+            let productColors: ProductColor[] = [];
+            for (let el of product_colors) {
+              let { hex_value: value, colour_name: name } = el;
+              productColors.push({ value, name });
+            }
+            state.products.push({
+              id,
+              brand,
+              name,
+              price,
+              priceSign,
+              currency,
+              image,
+              description,
+              rating,
+              category,
+              productType,
+              tagList,
+              productColors,
+            });
+          }
+        })
+        .then((err) => console.log(err))
+        .finally(() => (state.loading = false));
     },
   },
   actions: {
@@ -280,6 +334,9 @@ export default new Vuex.Store<State>({
     },
     deleteProduct({ commit }, payload) {
       commit(mutationTypes.DELETE_PRODUCT, payload);
+    },
+    filterProducts({ commit }, payload) {
+      commit(mutationTypes.FILTER_PRODUCTS, payload);
     },
   },
   modules: {},
