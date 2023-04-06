@@ -12,56 +12,56 @@
       </div>
       <div></div>
     </div>
-    <div>
+    <div class="content">
       <h1 class="title">Featured Products:</h1>
-      <div class="featured">
-        <div class="grid">
-          <div v-for="item in featured">
-            <div class="item" @click="() => handleClick(item)">
-              <img :src="item.image_link" />
-              <p class="item-name">{{ item.name }}</p>
-              <p>{{ item.brand }}</p>
-            </div>
+      <!-- <div class="featured"> -->
+      <div class="grid">
+        <div v-for="item in featured">
+          <div class="item" @click="() => handleClick(item)">
+            <img :src="item.image_link" />
+            <p class="item-name">{{ item.name }}</p>
+            <p>{{ item.brand }}</p>
           </div>
         </div>
       </div>
+      <!-- </div> -->
       <h1 class="title">Categories</h1>
-      <div class="lipsticks">
-        <h1 class="category-title">Lipsticks :</h1>
-        <div class="grid">
-          <div v-for="item in lipsticks">
-            <div class="item" @click="() => handleClick(item)">
-              <img :src="item.image_link" />
-              <p class="item-name">{{ item.name }}</p>
-              <p>{{ item.brand }}</p>
-            </div>
+      <!-- <div class="lipsticks"> -->
+      <h1 class="category-title">Lipsticks :</h1>
+      <div class="grid">
+        <div v-for="item in lipsticks">
+          <div class="item" @click="() => handleClick(item)">
+            <img :src="item.image_link" />
+            <p class="item-name">{{ item.name }}</p>
+            <p>{{ item.brand }}</p>
           </div>
         </div>
       </div>
-      <div class="powder">
-        <h1 class="category-title">Powder :</h1>
-        <div class="grid">
-          <div v-for="item in powder">
-            <div class="item" @click="() => handleClick(item)">
-              <img :src="item.image_link" />
-              <p class="item-name">{{ item.name }}</p>
-              <p>{{ item.brand }}</p>
-            </div>
+      <!-- </div> -->
+      <!-- <div class="powder"> -->
+      <h1 class="category-title">Powder :</h1>
+      <div class="grid">
+        <div v-for="item in powder">
+          <div class="item" @click="() => handleClick(item)">
+            <img :src="item.image_link" />
+            <p class="item-name">{{ item.name }}</p>
+            <p>{{ item.brand }}</p>
           </div>
         </div>
       </div>
-      <div class="liquid">
-        <h1 class="category-title">Liquid :</h1>
-        <div class="grid">
-          <div v-for="item in liquid">
-            <div class="item" @click="() => handleClick(item)">
-              <img :src="item.image_link" />
-              <p class="item-name">{{ item.name }}</p>
-              <p>{{ item.brand }}</p>
-            </div>
+      <!-- </div> -->
+      <!-- <div class="liquid"> -->
+      <h1 class="category-title">Liquid :</h1>
+      <div class="grid">
+        <div v-for="item in liquid">
+          <div class="item" @click="() => handleClick(item)">
+            <img :src="item.image_link" />
+            <p class="item-name">{{ item.name }}</p>
+            <p>{{ item.brand }}</p>
           </div>
         </div>
       </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -117,6 +117,8 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 60px;
+  background-color: aqua;
+  width: 100%;
 }
 .home {
   width: 100%;
@@ -129,6 +131,10 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 60px;
+}
+.content {
+  background-color: blueviolet;
+  width: 100%;
 }
 .about-us {
   font-size: 24px;
@@ -145,6 +151,8 @@ export default {
 
 .grid {
   display: grid;
+  width: 100%;
+  background-color: bisque;
   grid-template-columns: repeat(auto-fit, 350px);
   gap: 80px;
   justify-content: center;
