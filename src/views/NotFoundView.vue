@@ -16,6 +16,5 @@ export default {};
   align-items: center;
   font-size: 40px;
   font-weight: bold;
-  /* padding: 30px; */
 }
 </style>

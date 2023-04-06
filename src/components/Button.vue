@@ -1,15 +1,38 @@
 <template>
-  <button @click="(e) => $emit('clicked', e.target.value)">{{ title }}</button>
+  <div>
+    <button @click="handleClick">
+      <span v-if="!loading">
+        {{ title }}
+      </span>
+      <span v-else class="loader"> </span>
+    </button>
+  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
+  methods: {
+    handleClick(e) {
+      this.$emit('clicked', e.target.value);
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
+    },
+  },
+  data() {
+    return {
+      loading: false,
+    };
+  },
   props: {
     title: {
       type: String,
       required: true,
     },
   },
+  computed: mapState(['cartAddLoading']),
 };
 </script>
 
@@ -27,5 +50,24 @@ button {
 }
 button:hover {
   opacity: 1;
+}
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 5px solid #fff;
+  border-bottom-color: #5d3fd3;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

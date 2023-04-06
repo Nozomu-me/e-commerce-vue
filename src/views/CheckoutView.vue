@@ -83,7 +83,6 @@ export default {
 <style scoped>
 .container {
   height: 92vh;
-  /* padding: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,11 +125,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* justify-content: start; */
-  /* align-items: start; */
 }
 .submit {
-  /* all: unset; */
   align-self: center;
   border: none;
   background-color: #5d3fd3;

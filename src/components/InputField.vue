@@ -17,8 +17,6 @@ export default {
   props: ['placeholder', 'type', 'min', 'max', 'value'],
   data() {
     return {
-      //   show,
-      //   user: this.createUser(),
       input: '',
     };
   },

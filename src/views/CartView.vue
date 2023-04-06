@@ -9,7 +9,6 @@
       <div class="empty">Your Cart Is Empty :(</div>
       <hr />
     </div>
-    <!-- <div class="content"> -->
     <div v-show="customer?.cart.cartProducts.length > 0">
       <div v-for="product of customer?.cart.cartProducts">
         <CartProduct
@@ -33,7 +32,6 @@
         >
       </div>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
@@ -86,12 +84,7 @@ export default {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
   justify-content: center;
-  /* padding-top: 20px; */
-  /* border-width: 0.1px;
-  border-style: solid; */
-  /* width: 200px; */
   height: 100px;
   gap: 8px;
 }

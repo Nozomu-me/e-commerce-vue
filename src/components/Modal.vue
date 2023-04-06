@@ -5,7 +5,6 @@
       <button class="close-btn" @click="close">&times;</button>
       <form action="" @submit.prevent="submit">
         <InputField placeholder="Email" @change="email = $event"></InputField>
-        <!-- <small v-show="show">This user does not exist</small> -->
         <InputField
           placeholder="Password"
           @change="password = $event"
@@ -15,7 +14,6 @@
         <input type="submit" class="btn" value="Login" />
       </form>
       <a @click="handleClick">Register {{ $store.customer?.email }} </a>
-      <!-- <p>{{ $store.customer?.email }}</p> -->
     </div>
   </div>
 </template>
@@ -48,8 +46,6 @@ export default {
     },
     async submit() {
       ecomService.getCustomerByEmail(this.email).then((res) => {
-        console.log(res.data);
-
         if (res.data.length !== 0 && res.data[0].password === this.password) {
           this.show = false;
           localStorage.setItem('email', this.email);
@@ -96,7 +92,6 @@ small {
   right: 0;
   margin: auto;
   padding-top: 140px;
-  /* padding-bottom: 70px; */
   z-index: 200;
   box-shadow: 3px 3px 34px -2px rgba(0, 0, 0, 0.41);
   -webkit-box-shadow: 3px 3px 34px -2px rgba(0, 0, 0, 0.41);
@@ -105,7 +100,6 @@ small {
   flex-direction: column;
   justify-content: center;
   gap: 40px;
-  /* align-items: center; */
 }
 form {
   display: flex;

@@ -16,7 +16,6 @@
         <button @click.prevent="handleClick">
           <font-awesome-icon :icon="['fas', 'user']" class="icon user-icon" />
         </button>
-        <!-- <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="icon" /> -->
         <router-link :to="{ name: 'cart' }">
           <div class="cart" v-show="loged">
             <font-awesome-icon :icon="['fas', 'cart-shopping']" class="icon" />
@@ -32,10 +31,8 @@
 </template>
 
 <script>
-import ecomService from '@/services/ecomService';
 import Modal from '../components/Modal.vue';
 import Button from './Button.vue';
-import { mapState } from 'vuex';
 export default {
   props: ['loged'],
   components: {
@@ -45,7 +42,6 @@ export default {
   data() {
     return { show: false, data: null };
   },
-  // computed: mapState(['customer']),
   created() {
     this.$store.dispatch('getCustomerByEmail', {
       email: localStorage.getItem('email'),
@@ -130,6 +126,5 @@ button {
   border-radius: 50%;
   height: 20px;
   width: 20px;
-  /* text-align: center; */
 }
 </style>

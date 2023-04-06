@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- hello here -->
     <div><img :src="product.image" /></div>
     <div>
       <div class="name">{{ product.name }}</div>
@@ -43,10 +42,8 @@ export default {
   position: relative;
   display: flex;
   width: 100%;
-  /* background-color: aqua; */
   justify-content: space-between;
   align-items: center;
-  /* grid-template-columns: 1fr 1fr 1fr 100px; */
 }
 .input {
   width: 150px;

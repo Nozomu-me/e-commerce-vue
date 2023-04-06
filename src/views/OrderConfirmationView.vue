@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import ecomService from '@/services/ecomService';
 import { mapState } from 'vuex';
 export default {
   created() {
@@ -38,7 +37,6 @@ export default {
   computed: mapState(['customer']),
   methods: {
     confirme() {
-      console.log('conformed');
       let newCustomer = {
         ...this.customer,
         cart: { cartProducts: [], totalPrice: 0 },
@@ -53,7 +51,6 @@ export default {
 <style scoped>
 .container {
   height: 92vh;
-  /* padding: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,7 +77,6 @@ export default {
   font-weight: normal;
 }
 .btn {
-  /* all: unset; */
   align-self: center;
   border: none;
   background-color: #5d3fd3;

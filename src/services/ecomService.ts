@@ -1,6 +1,5 @@
 import { Customer, Order } from './../models/data.model';
 import axios from 'axios';
-// const API_URL = 'http://localhost:5000';
 const API_URL = 'https://ecom-vue-json-server.vercel.app';
 
 const apiClient = axios.create({

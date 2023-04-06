@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import ecomService from '@/services/ecomService';
 import Button from '../components/Button.vue';
 import { mapState } from 'vuex';
 
@@ -53,7 +52,7 @@ export default {
         params: { id: this.product.id },
       });
     },
-    addToCart() {
+    addToCart(event) {
       let { name, brand, price, image } = this.product;
       this.$store.dispatch('addToCart', {
         email: localStorage.getItem('email'),

@@ -19,7 +19,6 @@ import {
   faBasketShopping,
 } from '@fortawesome/free-solid-svg-icons';
 
-/* add icons to the library */
 library.add(
   faCartShopping,
   faUser,
@@ -29,7 +28,6 @@ library.add(
   faBasketShopping
 );
 
-/* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.config.productionTip = false;

@@ -185,7 +185,9 @@ export default new Vuex.Store<State>({
           .updateCustomer(newCustomer.id as number, newCustomer)
           .then((res) => {
             state.customer = res.data;
-          });
+          })
+          .catch((err) => console.log(err))
+          .finally(() => {});
       });
     },
     [mutationTypes.UPDATE_CART](state, { email, cartProduct }) {
@@ -246,14 +248,11 @@ export default new Vuex.Store<State>({
             } as Customer
           )
           .then((res) => {
-            console.log('------------- res ', res.data);
-            console.log('------------------ customer ', state.customer);
             state.customer = res.data;
           });
       });
     },
     [mutationTypes.UPDATE_CUSTOMER](state, payload) {
-      console.log(payload);
       const customer: Customer = payload;
       ecomService
         .updateCustomer(customer.id as number, customer)
@@ -262,7 +261,6 @@ export default new Vuex.Store<State>({
         });
     },
     [mutationTypes.FILTER_PRODUCTS](state, { key, value }) {
-      console.log(key, value);
       state.loading = true;
       ecomService
         .filterProducts(key, value)

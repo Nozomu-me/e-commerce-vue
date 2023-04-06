@@ -29,4 +29,3 @@ json-server --watch db.json -p 5000
 ### overview
 
 - models/data.modela.ts : declare interfaces
--

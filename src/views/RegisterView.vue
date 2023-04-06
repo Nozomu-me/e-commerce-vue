@@ -101,8 +101,6 @@ small {
   left: 0;
   right: 0;
   padding: 20px;
-  /* background-color: aqua; */
-  /* height: 100vh; */
   display: flex;
 }
 .image {
