@@ -117,7 +117,6 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 60px;
-  background-color: aqua;
   width: 100%;
 }
 .home {
@@ -133,7 +132,6 @@ export default {
   padding: 60px;
 }
 .content {
-  background-color: blueviolet;
   width: 100%;
 }
 .about-us {
@@ -152,7 +150,6 @@ export default {
 .grid {
   display: grid;
   width: 100%;
-  background-color: bisque;
   grid-template-columns: repeat(auto-fit, 300px);
   gap: 80px;
   justify-content: center;
