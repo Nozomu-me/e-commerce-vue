@@ -3,8 +3,14 @@ export interface ProductColor {
   name: string;
 }
 
+export interface Review {
+  customerName: string;
+  content: string;
+}
+
 export interface Product {
   id: number;
+  reviews: Review[];
   brand: string;
   name: string;
   price: string;

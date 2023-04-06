@@ -46,6 +46,16 @@
         </ul>
       </div>
     </div>
+    <hr />
+    <div class="reviews">
+      <h3>Cusomers reviews</h3>
+      <textarea @input="handleChange"></textarea>
+      <button @click="submit">Add review</button>
+      <div v-for="review in product.reviews">
+        <h3>{{ review.customerName }}</h3>
+        <p class="rev-content">{{ review.content }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -61,7 +71,7 @@ export default {
     this.$store.dispatch('getProductById', { id: this.$route.params.id });
     if (localStorage.getItem('email') !== null) this.show = true;
   },
-  computed: mapState(['product', 'loading']),
+  computed: mapState(['product', 'loading', 'customer']),
   methods: {
     addToCart() {
       let { name, brand, price, image } = this.product;
@@ -71,11 +81,28 @@ export default {
       });
       this.$router.push({ name: 'cart' });
     },
+    handleChange(e) {
+      this.reviewInput = e.target.value;
+    },
+    submit() {
+      let review = {
+        customerName: this.customer.firstName + ' ' + this.customer.lastName,
+        content: this.reviewInput,
+      };
+      this.$store.dispatch('updateProduct', {
+        id: this.product.id,
+        product: {
+          ...this.product,
+          reviews: [...this.product.reviews, review],
+        },
+      });
+    },
   },
 
   data() {
     return {
       show: false,
+      reviewInput: '',
     };
   },
 };
@@ -193,5 +220,41 @@ hr {
 }
 .description li {
   margin-left: 40px;
+}
+.reviews {
+  font-size: 20px;
+  text-align: start;
+  line-height: 35px;
+  padding: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.reviews h3 {
+  font-weight: 900;
+}
+.reviews textarea {
+  height: 200px;
+  width: 90%;
+  max-width: 630px;
+  opacity: 0.7;
+  padding: 10px;
+  font-size: 20px;
+}
+.reviews button {
+  padding: 10px;
+  border: none;
+  background-color: #5d3fd3;
+  opacity: 0.7;
+  color: white;
+  font-size: 18px;
+  width: 150px;
+}
+.reviews button:hover {
+  opacity: 1;
+}
+.rev-content {
+  margin-left: 30px;
 }
 </style>

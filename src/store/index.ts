@@ -40,6 +40,7 @@ export default new Vuex.Store<State>({
             let {
               id,
               brand,
+              reviews,
               name,
               price,
               price_sign: priceSign,
@@ -59,6 +60,7 @@ export default new Vuex.Store<State>({
             }
             state.products.push({
               id,
+              reviews,
               brand,
               name,
               price,
@@ -84,6 +86,7 @@ export default new Vuex.Store<State>({
         .then((res) => {
           let {
             id,
+            reviews,
             brand,
             name,
             price,
@@ -104,6 +107,7 @@ export default new Vuex.Store<State>({
           }
           state.product = {
             id,
+            reviews,
             brand,
             name,
             price,
@@ -120,6 +124,16 @@ export default new Vuex.Store<State>({
         })
         .catch((err) => console.log(err))
         .finally(() => (state.loading = false));
+    },
+    [mutationTypes.UPADATE_PRODUCT](state, { id, product }) {
+      ecomService
+        .updateProduct(id, product)
+        .then((res) => {
+          console.log('-------- res data', res.data);
+
+          state.product = res.data;
+        })
+        .catch((err) => console.log(err));
     },
     [mutationTypes.POST_CUSTOMER](
       state,
@@ -269,6 +283,7 @@ export default new Vuex.Store<State>({
           for (let el of res.data) {
             let {
               id,
+              reviews,
               brand,
               name,
               price,
@@ -289,6 +304,7 @@ export default new Vuex.Store<State>({
             }
             state.products.push({
               id,
+              reviews,
               brand,
               name,
               price,
@@ -314,6 +330,9 @@ export default new Vuex.Store<State>({
     },
     getProductById({ commit }, payload) {
       commit(mutationTypes.GET_PRODUCT_BY_ID, payload);
+    },
+    updateProduct({ commit }, payload) {
+      commit(mutationTypes.UPADATE_PRODUCT, payload);
     },
     registerCustomer({ commit }, payload) {
       commit(mutationTypes.POST_CUSTOMER, payload);

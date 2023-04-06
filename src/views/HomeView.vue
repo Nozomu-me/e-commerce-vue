@@ -1,67 +1,62 @@
 <template>
-  <div class="container">
-    <div class="home">
-      <div class="about-us">
-        <h1>About Us</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut
-          voluptate consequuntur in corrupti, numquam, saepe dicta enim nam
-          asperiores cumque quibusdam alias placeat inventore ipsum molestias
-          itaque. Eum, cupiditate.
-        </p>
+  <div>
+    <div v-if="loading" class="spinner"><Spinner size="huge" /></div>
+    <div class="container" v-else>
+      <div class="home">
+        <div class="about-us">
+          <h1>About Us</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut
+            voluptate consequuntur in corrupti, numquam, saepe dicta enim nam
+            asperiores cumque quibusdam alias placeat inventore ipsum molestias
+            itaque. Eum, cupiditate.
+          </p>
+        </div>
+        <div></div>
       </div>
-      <div></div>
-    </div>
-    <div class="content">
-      <h1 class="title">Featured Products:</h1>
-      <!-- <div class="featured"> -->
-      <div class="grid">
-        <div v-for="item in featured">
-          <div class="item" @click="() => handleClick(item)">
-            <img :src="item.image_link" />
-            <p class="item-name">{{ item.name }}</p>
-            <p>{{ item.brand }}</p>
+      <div class="content">
+        <h1 class="title">Featured Products:</h1>
+        <div class="grid">
+          <div v-for="item in featured">
+            <div class="item" @click="() => handleClick(item)">
+              <img :src="item.image_link" />
+              <p class="item-name">{{ item.name }}</p>
+              <p>{{ item.brand }}</p>
+            </div>
+          </div>
+        </div>
+        <h1 class="title">Categories</h1>
+        <h1 class="category-title">Lipsticks :</h1>
+        <div class="grid">
+          <div v-for="item in lipsticks">
+            <div class="item" @click="() => handleClick(item)">
+              <img :src="item.image_link" />
+              <p class="item-name">{{ item.name }}</p>
+              <p>{{ item.brand }}</p>
+            </div>
+          </div>
+        </div>
+        <h1 class="category-title">Powder :</h1>
+        <div class="grid">
+          <div v-for="item in powder">
+            <div class="item" @click="() => handleClick(item)">
+              <img :src="item.image_link" />
+              <p class="item-name">{{ item.name }}</p>
+              <p>{{ item.brand }}</p>
+            </div>
+          </div>
+        </div>
+        <h1 class="category-title">Liquid :</h1>
+        <div class="grid">
+          <div v-for="item in liquid">
+            <div class="item" @click="() => handleClick(item)">
+              <img :src="item.image_link" />
+              <p class="item-name">{{ item.name }}</p>
+              <p>{{ item.brand }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <!-- </div> -->
-      <h1 class="title">Categories</h1>
-      <!-- <div class="lipsticks"> -->
-      <h1 class="category-title">Lipsticks :</h1>
-      <div class="grid">
-        <div v-for="item in lipsticks">
-          <div class="item" @click="() => handleClick(item)">
-            <img :src="item.image_link" />
-            <p class="item-name">{{ item.name }}</p>
-            <p>{{ item.brand }}</p>
-          </div>
-        </div>
-      </div>
-      <!-- </div> -->
-      <!-- <div class="powder"> -->
-      <h1 class="category-title">Powder :</h1>
-      <div class="grid">
-        <div v-for="item in powder">
-          <div class="item" @click="() => handleClick(item)">
-            <img :src="item.image_link" />
-            <p class="item-name">{{ item.name }}</p>
-            <p>{{ item.brand }}</p>
-          </div>
-        </div>
-      </div>
-      <!-- </div> -->
-      <!-- <div class="liquid"> -->
-      <h1 class="category-title">Liquid :</h1>
-      <div class="grid">
-        <div v-for="item in liquid">
-          <div class="item" @click="() => handleClick(item)">
-            <img :src="item.image_link" />
-            <p class="item-name">{{ item.name }}</p>
-            <p>{{ item.brand }}</p>
-          </div>
-        </div>
-      </div>
-      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -69,13 +64,19 @@
 <script>
 import ecomService from '@/services/ecomService';
 import { mapState } from 'vuex';
+import Spinner from 'vue-simple-spinner';
+
 export default {
+  components: {
+    Spinner,
+  },
   data() {
     return {
       lipsticks: [],
       powder: [],
       liquid: [],
       featured: [],
+      loading: false,
     };
   },
   computed: mapState(['customer']),
@@ -85,18 +86,22 @@ export default {
         email: localStorage.getItem('email'),
       });
     }
+    this.loading = true;
     const random = Math.floor(Math.random() * 100);
     ecomService.getProductsLimit(random, random + 4).then((res) => {
       this.featured = res.data;
-    });
-    ecomService.getCategory('lipstick', 4).then((res) => {
-      this.lipsticks = res.data;
-    });
-    ecomService.getCategory('powder', 4).then((res) => {
-      this.powder = res.data;
-    });
-    ecomService.getCategory('liquid', 4).then((res) => {
-      this.liquid = res.data;
+      ecomService.getCategory('lipstick', 4).then((res) => {
+        this.lipsticks = res.data;
+        ecomService.getCategory('powder', 4).then((res) => {
+          this.powder = res.data;
+          ecomService
+            .getCategory('liquid', 4)
+            .then((res) => {
+              this.liquid = res.data;
+            })
+            .finally(() => (this.loading = false));
+        });
+      });
     });
   },
   methods: {
@@ -130,6 +135,12 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 60px;
+}
+.spinner {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .content {
   width: 100%;

@@ -1,6 +1,6 @@
-import { Customer, Order } from './../models/data.model';
+import { Customer, Order, Product } from './../models/data.model';
 import axios from 'axios';
-const API_URL = 'https://ecom-vue-json-server.vercel.app';
+const API_URL = 'https://ecom-vue-json-server-git-main-nozomu-me.vercel.app/';
 
 const apiClient = axios.create({
   baseURL: API_URL,
@@ -20,6 +20,9 @@ export default {
   },
   getProductById(id: number) {
     return apiClient.get(`/products/${id}`);
+  },
+  updateProduct(id: number, product: Product) {
+    return apiClient.put(`/products/${id}`, product);
   },
   getCategory(category: string, limit: number) {
     return apiClient.get(`/products?category=${category}&_limit=${limit}`);
