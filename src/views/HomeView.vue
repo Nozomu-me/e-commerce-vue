@@ -156,11 +156,10 @@ export default {
   align-items: center;
 }
 img {
-  width: 300px;
+  width: 250px;
   height: 300px;
 }
 .item {
-  /* width: 350px; */
   height: 400px;
   padding: 20px;
   background-color: white;
