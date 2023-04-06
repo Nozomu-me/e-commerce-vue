@@ -8,7 +8,9 @@
         <span>Category: </span>
         {{ product.category }}
       </div>
-      <div class="currency">{{ product.price }} $</div>
+      <div class="currency">
+        {{ product.price }} <span>{{ product.currency }}</span>
+      </div>
     </div>
     <Button
       class="btn"
