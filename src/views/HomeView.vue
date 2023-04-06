@@ -145,7 +145,7 @@ export default {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, 350px);
   gap: 80px;
   justify-content: center;
   align-items: center;
@@ -155,7 +155,7 @@ img {
   height: 300px;
 }
 .item {
-  width: 350px;
+  /* width: 350px; */
   height: 450px;
   padding: 20px;
   background-color: white;
