@@ -153,7 +153,7 @@ export default {
   display: grid;
   width: 100%;
   background-color: bisque;
-  grid-template-columns: repeat(auto-fit, 350px);
+  grid-template-columns: repeat(auto-fit, 300px);
   gap: 80px;
   justify-content: center;
   align-items: center;
@@ -164,7 +164,7 @@ img {
 }
 .item {
   /* width: 350px; */
-  height: 450px;
+  height: 400px;
   padding: 20px;
   background-color: white;
   box-shadow: 3px 3px 34px -2px rgba(0, 0, 0, 0.41);
