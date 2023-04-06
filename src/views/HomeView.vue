@@ -167,6 +167,7 @@ img {
   -webkit-box-shadow: 3px 3px 34px -2px rgba(0, 0, 0, 0.41);
   -moz-box-shadow: 3px 3px 34px -2px rgba(0, 0, 0, 0.41);
   cursor: pointer;
+  transition: all 0.5s;
 }
 .item:hover {
   transform: scale(1.06);
