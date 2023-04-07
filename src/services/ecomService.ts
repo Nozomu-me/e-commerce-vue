@@ -1,7 +1,7 @@
 import { Customer, Order, Product } from './../models/data.model';
 import axios from 'axios';
 const API_URL = ' http://localhost:5000';
-// const API_URL = 'https://ecom-vue-json-server-git-main-nozomu-me.vercel.app/';
+
 const apiClient = axios.create({
   baseURL: API_URL,
   withCredentials: false,
