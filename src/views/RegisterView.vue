@@ -23,13 +23,13 @@
           @change="user.email = $event"
           type="email"
         ></InputField>
+        <small v-show="errorEmail">This email is already used</small>
         <InputField
           class="input"
           placeholder="Password"
           @change="user.password = $event"
           type="password"
         ></InputField>
-        <small v-show="errorEmail">This email is already used</small>
         <InputField
           class="input"
           placeholder="Phone Number"
@@ -82,8 +82,6 @@ export default {
       }
       if (this.errorEmail === false) {
         this.$store.dispatch('registerCustomer', this.user);
-        localStorage.setItem('email', this.customer.email);
-        this.$router.go(0);
       }
     },
   },

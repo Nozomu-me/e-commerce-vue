@@ -45,15 +45,19 @@ export default {
       this.$router.push({ name: 'register' });
     },
     async submit() {
-      ecomService.getCustomerByEmail(this.email).then((res) => {
-        if (res.data.length !== 0 && res.data[0].password === this.password) {
-          this.show = false;
-          localStorage.setItem('email', this.email);
-          this.$router.go(0);
-        } else {
-          this.show = true;
-        }
-      });
+      ecomService
+        .getCustomerByEmail(this.email)
+        .then((res) => {
+          if (res.data.length !== 0 && res.data[0].password === this.password) {
+            this.show = false;
+            this.$router.go(0);
+          } else {
+            this.show = true;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

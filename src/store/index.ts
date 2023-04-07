@@ -10,6 +10,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { mutationTypes } from './mutation-types';
 import ecomService from '../services/ecomService';
+
+import { vm } from '@/main';
+
 Vue.use(Vuex);
 interface State {
   products: Product[];
@@ -129,8 +132,6 @@ export default new Vuex.Store<State>({
       ecomService
         .updateProduct(id, product)
         .then((res) => {
-          console.log('-------- res data', res.data);
-
           state.product = res.data;
         })
         .catch((err) => console.log(err));
@@ -153,12 +154,20 @@ export default new Vuex.Store<State>({
         payment,
         shippingAddress: '',
       };
-      state.customer = customer;
-      ecomService.postCustomer(customer);
+
+      ecomService
+        .postCustomer(customer)
+        .then((res) => {
+          state.customer = res.data;
+          localStorage.setItem('email', email);
+          vm.$router.go(0);
+        })
+        .catch((err) => console.log(err));
     },
     [mutationTypes.GET_CUSTOMER_BY_EMAIL](state, { email }) {
       ecomService.getCustomerByEmail(email).then((res) => {
         state.customer = res.data[0];
+        localStorage.setItem('email', res.data[0]?.email);
       });
     },
     async [mutationTypes.ADD_TO_CART](

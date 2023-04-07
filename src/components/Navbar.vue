@@ -43,9 +43,10 @@ export default {
     return { show: false, data: null };
   },
   created() {
-    this.$store.dispatch('getCustomerByEmail', {
-      email: localStorage.getItem('email'),
-    });
+    if (localStorage.getItem('email') !== null)
+      this.$store.dispatch('getCustomerByEmail', {
+        email: localStorage.getItem('email'),
+      });
   },
   methods: {
     handleClick() {
