@@ -16,9 +16,6 @@ import {
   faBasketShopping,
 } from '@fortawesome/free-solid-svg-icons';
 
-// export const API_URL = ' http://localhost:5000';
-// export const API_URL =
-//   'https://ecom-vue-json-server-git-main-nozomu-me.vercel.app/';
 library.add(
   faCartShopping,
   faUser,

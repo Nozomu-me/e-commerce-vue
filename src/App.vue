@@ -5,6 +5,7 @@
       <Modal class="app-modal" @show="handleShow" v-show="showModal"></Modal>
       <Logout v-show="showLogout"></Logout>
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -12,12 +13,14 @@
 import Navbar from './components/Navbar.vue';
 import Modal from './components/Modal.vue';
 import Logout from './components/Logout.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   components: {
     Navbar,
     Modal,
     Logout,
+    Footer,
   },
   mounted() {
     if (localStorage.getItem('email') === null) {

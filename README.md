@@ -25,7 +25,3 @@ json-server --watch db.json -p 5000
 - /order-confirmation : show puchase resume and confirm
 - /thank-you : to thank the user for the purchase
 - /not-found : for non existed routes
-
-### overview
-
-- models/data.modela.ts : declare interfaces

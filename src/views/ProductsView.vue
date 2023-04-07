@@ -3,7 +3,12 @@
     <div class="category" v-if="!loading">
       <div>
         <label for="category">Choose a category:</label>
-        <select name="category" id="category" @input="selectCategory">
+        <select
+          name="category"
+          id="category"
+          @input="selectCategory"
+          :value="value"
+        >
           <option value="all">all</option>
           <option value="powder">powder</option>
           <option value="cream">cream</option>
@@ -33,18 +38,27 @@ import ProductCard from '../components/ProductCard.vue';
 import Spinner from 'vue-simple-spinner';
 import { mapState } from 'vuex';
 export default {
+  data() {
+    return {
+      value: 'all',
+    };
+  },
   components: {
     ProductCard,
     Spinner,
   },
   methods: {
     selectCategory(e) {
-      if (e.target.value === 'all') this.$store.dispatch('getProducts');
-      else
+      if (e.target.value === 'all') {
+        this.value = e.target.value;
+        this.$store.dispatch('getProducts');
+      } else {
         this.$store.dispatch('filterProducts', {
           key: 'category',
           value: e.target.value,
         });
+        this.value = e.target.value;
+      }
     },
   },
   created() {
